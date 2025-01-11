@@ -84,3 +84,44 @@ const items = [
     img: "./img/12.jpeg",
   },
 ];
+
+const cardsContainer = document.getElementById("shop-items");
+const cardTemplate = document.getElementById("item-template");
+
+for (const item of items) {
+  const card = cardTemplate.content.cloneNode(true);
+  const cardTitle = card.querySelector(".content h1");
+  cardTitle.textContent = item.title;
+  const cardDescription = card.querySelector(".content p");
+  cardDescription.textContent = item.description;
+  const cardImage = card.querySelector(".shop-item img");
+  cardImage.src = item.img;
+  const cardPrice = card.querySelector(".price");
+  cardPrice.textContent = item.price;
+  const cardTags = card.querySelector(".tags");
+
+  for (const tag of item.tags) {
+    const tagDiv = document.createElement("div");
+    tagDiv.className = "tag";
+    tagDiv.textContent = tag;
+    cardTags.append(tagDiv);
+  }
+  cardsContainer.append(card);
+}
+
+
+
+
+// const searchButton = document.getElementById('search-btn');
+// const searchInput = document.getElementById('search-input');
+// searchButton.addEventListener('click', () => {
+//   const asd = searchInput.value.trim().toLowerCase();
+// })
+
+
+
+
+
+
+
+
