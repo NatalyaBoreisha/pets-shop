@@ -85,10 +85,14 @@ const items = [
   },
 ];
 
-const cardsContainer = document.getElementById("shop-items");
 const cardTemplate = document.getElementById("item-template");
 
-for (const item of items) {
+function drawCard(card) {
+  const cardsContainer = document.getElementById("shop-items");
+  cardsContainer.append(card);
+}
+
+function buildCard (item) {
   const card = cardTemplate.content.cloneNode(true);
   const cardTitle = card.querySelector(".content h1");
   cardTitle.textContent = item.title;
@@ -106,8 +110,14 @@ for (const item of items) {
     tagDiv.textContent = tag;
     cardTags.append(tagDiv);
   }
-  cardsContainer.append(card);
+
+  return card;
 }
+
+items.forEach(function(item) {
+  const card = buildCard(item);
+  drawCard(card);
+});
 
 
 
